@@ -1,0 +1,3740 @@
+{
+  "_schema-version": 2,
+  "_currency": "USD",
+  "_checked-at": "2026-09-10T00:00:00Z",
+  "_review-after": "2026-10-10",
+  "_scope": "Direct-provider text/chat API list prices. Not ChatGPT, Claude, Kimi or Grok subscriptions. See docs/billing.md.",
+  "_warning": "Estimates from a dated public documentation snapshot and caller-supplied usage. Not an invoice; omitted charges and unpriced records are excluded. Verify current provider pricing before relying on budgets.",
+  "openai/gpt-6-astra": {
+    "source-url": "https://developers.openai.com/api/docs/pricing",
+    "notes": "Direct global API. Cache-write replaces ordinary input for those tokens. >272000 prompt tokens selects long rates for all tokens. Regional uplift excluded; use a custom tier. Sol price is promotional at least through 2026-11-21.",
+    "tariffs": [
+      {
+        "id": "standard-short",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "12.50",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "standard-long",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "75.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "25.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-short",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "6.250",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-long",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "10.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "37.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "12.500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-short",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "6.250",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-long",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "10.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "37.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "12.500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-short",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "100",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "25.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-long",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "150.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "50.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "openai/gpt-5.6-sol": {
+    "source-url": "https://developers.openai.com/api/docs/pricing",
+    "notes": "Direct global API. Cache-write replaces ordinary input for those tokens. >272000 prompt tokens selects long rates for all tokens. Regional uplift excluded; use a custom tier. Sol price is promotional at least through 2026-11-21.",
+    "tariffs": [
+      {
+        "id": "standard-short",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "5.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "standard-long",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "8",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "30.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.80",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "10.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-short",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "2.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "10.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.200",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "2.500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-long",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "4.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "15.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.400",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "5.000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-short",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "2.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "10.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.200",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "2.500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-long",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "4.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "15.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.400",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "5.000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-short",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "8",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.80",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "10.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-long",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "16",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "60.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1.60",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "20.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "openai/gpt-5.6-terra": {
+    "source-url": "https://developers.openai.com/api/docs/pricing",
+    "notes": "Direct global API. Cache-write replaces ordinary input for those tokens. >272000 prompt tokens selects long rates for all tokens. Regional uplift excluded; use a custom tier. Sol price is promotional at least through 2026-11-21.",
+    "tariffs": [
+      {
+        "id": "standard-short",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "standard-long",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "18.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "5.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-short",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "1.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.100",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "1.250",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-long",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "2.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "9.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.200",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "2.500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-short",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "1.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.100",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "1.250",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-long",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "2.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "9.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.200",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "2.500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-short",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "24",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "5.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-long",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "8",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "36.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.80",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "10.00",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "openai/gpt-5.6-luna": {
+    "source-url": "https://developers.openai.com/api/docs/pricing",
+    "notes": "Direct global API. Cache-write replaces ordinary input for those tokens. >272000 prompt tokens selects long rates for all tokens. Regional uplift excluded; use a custom tier. Sol price is promotional at least through 2026-11-21.",
+    "tariffs": [
+      {
+        "id": "standard-short",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.02",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.2500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "standard-long",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.800",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.04",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.5000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-short",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "0.100",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.600",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.010",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.12500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "batch-long",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "0.200",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.9000",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.020",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.25000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-short",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "0.100",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.600",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.010",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.12500",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flex-long",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "0.200",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.9000",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.020",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.25000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-short",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 272000,
+        "rates": {
+          "input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.04",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "0.5000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "fast-long",
+        "service-tier": "fast",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 272000,
+        "max-input": 1050000,
+        "rates": {
+          "input": {
+            "usd": "0.80",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.600",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.08",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write": {
+            "usd": "1.0000",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "openai/gpt-5": {
+    "source-url": "https://developers.openai.com/api/docs/models/gpt-5",
+    "notes": "Direct API standard text tokens. Other service tiers are unpriced in this snapshot.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.125",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "openai/gpt-5-mini": {
+    "source-url": "https://developers.openai.com/api/docs/models/gpt-5-mini",
+    "notes": "Direct API standard text tokens. Other service tiers are unpriced in this snapshot.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.025",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "openai/gpt-4o": {
+    "source-url": "https://developers.openai.com/api/docs/models/gpt-4o",
+    "notes": "Direct API standard text tokens. Other service tiers are unpriced in this snapshot.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1.25",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-fable-5-1": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "12.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.125",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "6.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "10.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-fable-5": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "12.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "6.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "10.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-opus-5": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "6.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "3.125",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-opus-4-8": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "6.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "3.125",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-opus-4-7": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "6.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "3.125",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-opus-4-6": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "6.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "3.125",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-sonnet-5": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "5.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.100",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "1.250",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "2.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-sonnet-4-6": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "3",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "15",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "3.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "6",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "7.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.150",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "1.875",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "3.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "anthropic/claude-haiku-4-5": {
+    "source-url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "notes": "Direct global API. Input excludes cache reads and both cache-write durations. Web-search quantities exclude failed searches. US-only inference and fast mode require custom tariffs. Sonnet 5 $2/$10 is now standard; announced September increase was cancelled.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "1.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2.5",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.050",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-5m": {
+            "usd": "0.625",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-write-1h": {
+            "usd": "1.0",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "moonshot/kimi-k3": {
+    "source-url": "https://platform.kimi.ai/",
+    "notes": "Rates read from official platform model cards; documentation pricing tables did not render. K3 corroborated by https://www.kimi.ai/blog/kimi-k3. Tool and batch charges not included.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "3",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "15",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "moonshot/kimi-k2.7-code": {
+    "source-url": "https://platform.kimi.ai/",
+    "notes": "Rates read from official platform model cards; documentation pricing tables did not render. K3 corroborated by https://www.kimi.ai/blog/kimi-k3. Tool and batch charges not included.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 262144,
+        "rates": {
+          "input": {
+            "usd": "0.95",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.19",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "moonshot/kimi-k2.6": {
+    "source-url": "https://platform.kimi.ai/",
+    "notes": "Rates read from official platform model cards; documentation pricing tables did not render. K3 corroborated by https://www.kimi.ai/blog/kimi-k3. Tool and batch charges not included.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 262144,
+        "rates": {
+          "input": {
+            "usd": "0.95",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.16",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ]
+  },
+  "google/gemini-3.8-flash": {
+    "source-url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "notes": "Paid tier; published rate change January 1 2027 encoded. Billable search queries after shared allowances must be supplied by caller; storage is token-hours, not input tokens.",
+    "tariffs": [
+      {
+        "id": "standard-2026",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.075",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "standard-2027",
+        "service-tier": "standard",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "7.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.150",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch-2026",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.875",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch-2027",
+        "service-tier": "batch",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "flex-2026",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.875",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "flex-2027",
+        "service-tier": "flex",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "priority-2026",
+        "service-tier": "priority",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.35",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.135",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "priority-2027",
+        "service-tier": "priority",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.70",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "13.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.270",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "google/gemini-3.7-flash": {
+    "source-url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "notes": "Paid tier; published rate change January 1 2027 encoded. Billable search queries after shared allowances must be supplied by caller; storage is token-hours, not input tokens.",
+    "tariffs": [
+      {
+        "id": "standard-2026",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.075",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "standard-2027",
+        "service-tier": "standard",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "7.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.150",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch-2026",
+        "service-tier": "batch",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.875",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "batch-2027",
+        "service-tier": "batch",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "flex-2026",
+        "service-tier": "flex",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.875",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0375",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "flex-2027",
+        "service-tier": "flex",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.0750",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "priority-2026",
+        "service-tier": "priority",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.35",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6.75",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.135",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "0.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "priority-2027",
+        "service-tier": "priority",
+        "from": "2027-01-01T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.70",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "13.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.270",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1.00",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          },
+          "maps-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "google/gemini-3.5-flash-lite": {
+    "source-url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "notes": "Paid standard tier. Search quantities must already exclude shared free allowances.",
+    "tariffs": [
+      {
+        "id": "standard",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.03",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "1",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "google/gemini-3.1-pro-preview": {
+    "source-url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "notes": "Paid standard tier. >200000 prompt tokens changes all token rates. Output includes thinking. Only post-allowance billable searches/grounded prompts may be supplied. Other service tiers require a custom tariff.",
+    "tariffs": [
+      {
+        "id": "standard-short",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 200000,
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "4.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "standard-long",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 200000,
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "18",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "4.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "14",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "google/gemini-2.5-pro": {
+    "source-url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "notes": "Paid standard tier. >200000 prompt tokens changes all token rates. Output includes thinking. Only post-allowance billable searches/grounded prompts may be supplied. Other service tiers require a custom tariff.",
+    "tariffs": [
+      {
+        "id": "standard-short",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 200000,
+        "rates": {
+          "input": {
+            "usd": "1.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "10",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.125",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "4.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "grounded-prompts": {
+            "usd": "35",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "standard-long",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 200000,
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "15",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cache-storage-token-hours": {
+            "usd": "4.50",
+            "unit": "token-hour",
+            "per": "1000000"
+          },
+          "grounded-prompts": {
+            "usd": "35",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "deepseek/deepseek-flash": {
+    "source-url": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "notes": "Actual usage-time required. Peak: weekdays 01:00-04:00 and 06:00-10:00 UTC, end exclusive. V4 Flash alias serves V4.1 Flash. V4 Pro routes to Flash at 2026-09-14 04:00 UTC at Flash rates.",
+    "tariffs": [
+      {
+        "id": "flash-off-peak",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "time-band": "off-peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.15",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.60",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.003",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flash-peak",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "time-band": "peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.006",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ],
+    "peak-utc": {
+      "weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "minute-ranges": [
+        [
+          60,
+          240
+        ],
+        [
+          360,
+          600
+        ]
+      ]
+    }
+  },
+  "deepseek/deepseek-v4-flash": {
+    "source-url": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "notes": "Actual usage-time required. Peak: weekdays 01:00-04:00 and 06:00-10:00 UTC, end exclusive. V4 Flash alias serves V4.1 Flash. V4 Pro routes to Flash at 2026-09-14 04:00 UTC at Flash rates.",
+    "tariffs": [
+      {
+        "id": "flash-off-peak",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "time-band": "off-peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.15",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.60",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.003",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "flash-peak",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "time-band": "peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.006",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ],
+    "peak-utc": {
+      "weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "minute-ranges": [
+        [
+          60,
+          240
+        ],
+        [
+          360,
+          600
+        ]
+      ]
+    }
+  },
+  "deepseek/deepseek-v4-pro": {
+    "source-url": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "notes": "Actual usage-time required. Peak: weekdays 01:00-04:00 and 06:00-10:00 UTC, end exclusive. V4 Flash alias serves V4.1 Flash. V4 Pro routes to Flash at 2026-09-14 04:00 UTC at Flash rates.",
+    "tariffs": [
+      {
+        "id": "pro-off-peak",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2026-09-14T04:00:00Z",
+        "time-band": "off-peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.66",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.98",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.022",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "pro-peak",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "until": "2026-09-14T04:00:00Z",
+        "time-band": "peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "1.32",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "3.96",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.044",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "routed-flash-off-peak",
+        "service-tier": "standard",
+        "from": "2026-09-14T04:00:00Z",
+        "time-band": "off-peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.15",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "0.60",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.003",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      },
+      {
+        "id": "routed-flash-peak",
+        "service-tier": "standard",
+        "from": "2026-09-14T04:00:00Z",
+        "time-band": "peak",
+        "max-input": 1000000,
+        "rates": {
+          "input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "1.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.006",
+            "unit": "token",
+            "per": "1000000"
+          }
+        }
+      }
+    ],
+    "peak-utc": {
+      "weekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "minute-ranges": [
+        [
+          60,
+          240
+        ],
+        [
+          360,
+          600
+        ]
+      ]
+    }
+  },
+  "xai/grok-4.6": {
+    "source-url": "https://docs.x.ai/developers/pricing",
+    "notes": "Direct API standard text. >=200000 prompt tokens selects long rates, following pricing table (model detail page says exceeds). X Search switches billing units 2026-09-21 19:00 UTC (12:00 PDT). Tool rates do not scale with context.",
+    "tariffs": [
+      {
+        "id": "short-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "short-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "max-input": 199999,
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "min-input-exclusive": 199999,
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "1.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "xai/grok-4.5": {
+    "source-url": "https://docs.x.ai/developers/pricing",
+    "notes": "Direct API standard text. >=200000 prompt tokens selects long rates, following pricing table (model detail page says exceeds). X Search switches billing units 2026-09-21 19:00 UTC (12:00 PDT). Tool rates do not scale with context.",
+    "tariffs": [
+      {
+        "id": "short-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "short-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "max-input": 199999,
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "6",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.30",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.60",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "min-input-exclusive": 199999,
+        "rates": {
+          "input": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "12",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.60",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "xai/grok-4.3": {
+    "source-url": "https://docs.x.ai/developers/pricing",
+    "notes": "Direct API standard text. >=200000 prompt tokens selects long rates, following pricing table (model detail page says exceeds). X Search switches billing units 2026-09-21 19:00 UTC (12:00 PDT). Tool rates do not scale with context.",
+    "tariffs": [
+      {
+        "id": "short-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "short-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "max-input": 199999,
+        "rates": {
+          "input": {
+            "usd": "1.25",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "5.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "min-input-exclusive": 199999,
+        "rates": {
+          "input": {
+            "usd": "2.50",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "5.00",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  },
+  "xai/grok-build-0.1": {
+    "source-url": "https://docs.x.ai/developers/pricing",
+    "notes": "Direct API standard text. >=200000 prompt tokens selects long rates, following pricing table (model detail page says exceeds). X Search switches billing units 2026-09-21 19:00 UTC (12:00 PDT). Tool rates do not scale with context.",
+    "tariffs": [
+      {
+        "id": "short-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "max-input": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "1",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "short-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "max-input": 199999,
+        "rates": {
+          "input": {
+            "usd": "1",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.20",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-before-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-10T00:00:00Z",
+        "min-input-exclusive": 199999,
+        "until": "2026-09-21T19:00:00Z",
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      },
+      {
+        "id": "long-after-x-change",
+        "service-tier": "standard",
+        "from": "2026-09-21T19:00:00Z",
+        "min-input-exclusive": 199999,
+        "rates": {
+          "input": {
+            "usd": "2",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "output": {
+            "usd": "4",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "cached-input": {
+            "usd": "0.40",
+            "unit": "token",
+            "per": "1000000"
+          },
+          "web-search-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "code-execution-requests": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "attachment-search-requests": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          },
+          "collection-search-requests": {
+            "usd": "2.50",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-posts-fetched": {
+            "usd": "5",
+            "unit": "request",
+            "per": "1000"
+          },
+          "x-profiles-fetched": {
+            "usd": "10",
+            "unit": "request",
+            "per": "1000"
+          }
+        }
+      }
+    ]
+  }
+}

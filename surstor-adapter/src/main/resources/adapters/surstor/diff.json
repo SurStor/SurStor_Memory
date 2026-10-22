@@ -1,0 +1,24 @@
+{
+  "name": "Diff artifacts",
+  "description": "Compute a unified diff between two SurStor artifacts. Only text content can be diffed.",
+  "operation": {
+    "adapter": "surstor:diff",
+    "input": {
+      "type": "object",
+      "properties": {
+        "idA": { "type": "string", "description": "First artifact ID" },
+        "idB": { "type": "string", "description": "Second artifact ID" }
+      },
+      "required": ["idA", "idB"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "diffable": { "type": "boolean" },
+        "diff": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  }
+}

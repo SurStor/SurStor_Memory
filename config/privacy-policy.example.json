@@ -1,0 +1,4 @@
+{
+  "redactTerms": ["Example confidential client name"],
+  "excludeTerms": ["Example project that must never be captured"]
+}

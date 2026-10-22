@@ -1,0 +1,32 @@
+# AGENTS.md
+
+Guidance for AI agents working in this repository.
+
+## Overview
+
+SurStor Node (v0.2.0-alpha.1) — persistent external memory for locally run models, with
+tamper-evident records built as a Covia venue module. See `docs/local-models.md`
+for the primary installation and MCP workflow. Maven multi-module project:
+`surstor-adapter` (venue adapter, 12 MCP ops) and `surstor-node` (CLI packaging,
+fat jar). See
+`README.md` for the record format and `INTEGRATION_NOTES.md` for upstream API
+quirks — read both before changing adapter code.
+
+## Development environment
+
+- Install Java 21+ and set `JAVA_HOME` to your local JDK installation.
+- Install Maven 3.7+ and add its `bin` directory to `PATH`.
+- Confirm `java -version` and `mvn -version` use the intended JDK.
+- **Covia `0.9.6-SNAPSHOT` is the installation default.** On a fresh machine,
+  install compatible `covia-core` and `venue` artifacts from source using
+  `mvn clean install -DskipTests`. Record the upstream commit; the snapshot
+  version alone does not pin a compatible revision. See `INTEGRATION_NOTES.md`.
+
+## Commands
+
+```bash
+mvn package          # full build + tests → surstor-node/target/surstor-node.jar
+mvn test             # run the current test suite
+java -jar surstor-node/target/surstor-node.jar start --config config/surstor.toml
+java -jar surstor-node/target/surstor-node.jar verify <bundle.json>   # offline verify, exit 0 = valid
+```

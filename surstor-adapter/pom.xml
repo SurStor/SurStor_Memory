@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ai.surstor</groupId>
+        <artifactId>surstor-node-parent</artifactId>
+        <version>0.2.0-alpha.1</version>
+    </parent>
+
+    <artifactId>surstor-adapter</artifactId>
+    <name>SurStor Adapter</name>
+    <description>Evidence layer adapter for Covia venue: two-cell CAD3 records, provenance, cost accounting</description>
+
+    <properties>
+        <!-- Skip ordinary deploy-plugin publication. -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
+    <dependencies>
+        <!-- The venue SPI — provided by the loading venue, never bundled -->
+        <dependency>
+            <groupId>ai.covia</groupId>
+            <artifactId>venue</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Convex cell types — provided by the venue -->
+        <dependency>
+            <groupId>world.convex</groupId>
+            <artifactId>convex-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.convex</groupId>
+            <artifactId>convex-peer</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Semantic search: on-node embeddings (DJL + ONNX Runtime) and
+             vector index (Lucene HNSW). Bundled into the module jar — no
+             runtime downloads, no network access. -->
+        <dependency>
+            <groupId>ai.djl</groupId>
+            <artifactId>api</artifactId>
+            <version>0.31.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ai.djl.huggingface</groupId>
+            <artifactId>tokenizers</artifactId>
+            <version>0.31.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ai.djl.onnxruntime</groupId>
+            <artifactId>onnxruntime-engine</artifactId>
+            <version>0.31.1</version>
+        </dependency>
+        <!-- Pulls com.microsoft.onnxruntime:onnxruntime transitively:
+             ONNX Runtime native binaries for all platforms, so DJL never
+             downloads natives at runtime -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>9.12.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.5.6</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <covia.module.jar>${project.build.directory}/${project.build.finalName}-module.jar</covia.module.jar>
+                        <covia.venue.jar>${project.parent.basedir}/../covia-ref/venue/target/covia.jar</covia.venue.jar>
+                        <covia.test.classes>${project.build.testOutputDirectory}</covia.test.classes>
+                    </systemPropertyVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- The loadable module jar: surstor-adapter only, attached with the
+                 "module" classifier. The plain jar remains the Maven artifact. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>module</shadedClassifierName>
+                            <artifactSet>
+                                <excludes>
+                                    <!-- Host API and Convex cell/runtime identity are parent-first. -->
+                                    <exclude>ai.covia:venue</exclude>
+                                    <exclude>ai.covia:covia-core</exclude>
+                                    <exclude>world.convex:convex-core</exclude>
+                                    <exclude>world.convex:convex-peer</exclude>
+                                    <exclude>world.convex:convex-dlfs</exclude>
+                                    <exclude>world.convex:convex-java</exclude>
+                                    <exclude>world.convex:convex-restapi</exclude>
+                                    <!-- Logging resolves parent-first from the venue -->
+                                    <exclude>org.slf4j:*</exclude>
+                                    <exclude>ch.qos.logback:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.class</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <!-- Lucene ships Java-19/20/21-specific classes under
+                                     META-INF/versions (MemorySegment mmap). Without this
+                                     entry the shaded manifest loses Multi-Release and
+                                     MMapDirectory fails with LinkageError at runtime. -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Multi-Release>true</Multi-Release>
+                                    </manifestEntries>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

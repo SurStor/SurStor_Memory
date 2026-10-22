@@ -1,0 +1,15 @@
+# Fresh-start encrypted profile. Supply a random 32-byte key as 64 hex characters
+# through SURSTOR_ETCH_KEY. Never put the key itself in this file or in Git.
+[node]
+bind = "127.0.0.1"
+port = "8484"
+data_dir = "~/.surstor-node-encrypted"
+
+[encryption]
+enabled = true
+cipher = "aes-256-ctr"
+key_env = "SURSTOR_ETCH_KEY"
+# Alternatively remove key_env and set key_file to a protected file OUTSIDE data_dir.
+
+[search]
+enabled = false

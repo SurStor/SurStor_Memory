@@ -1,0 +1,51 @@
+{
+  "name": "Verify artifact",
+  "description": "Verify a SurStor artifact's integrity. Checks the Cell 2 branch-ref binding to Cell 1. With deep=true, walks the full session hash chain and recomputes costs against cited price schedules. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:verify",
+    "input": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Artifact ID (full or short)"
+        },
+        "deep": {
+          "type": "boolean",
+          "description": "Walk session chain and recompute costs",
+          "default": false
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "checks": {
+          "type": "object",
+          "properties": {
+            "branchRef": {
+              "type": "boolean"
+            },
+            "chain": {
+              "type": "boolean"
+            },
+            "schedule": {
+              "type": "boolean"
+            }
+          }
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        }
+      }
+    }
+  }
+}

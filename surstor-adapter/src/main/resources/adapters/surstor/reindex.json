@@ -1,0 +1,20 @@
+{
+  "name": "Rebuild search index",
+  "description": "Rebuilds the local semantic search index from the etch store: wipes all index documents, re-embeds and re-indexes every stored artifact. Idempotent; safe to run while serving. Use after deleting the index directory or switching embedding models.",
+  "operation": {
+    "adapter": "surstor:reindex",
+    "input": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "reindexed": { "type": "integer", "description": "Artifacts re-indexed" },
+        "skipped":   { "type": "integer", "description": "Artifacts skipped (non-text or unresolvable)" },
+        "tookMs":    { "type": "integer" }
+      }
+    }
+  }
+}

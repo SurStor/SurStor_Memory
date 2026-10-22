@@ -1,0 +1,27 @@
+{
+  "name": "Get price schedule",
+  "description": "Get the current SurStor price schedule and its value ID. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:prices/get",
+    "input": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "schedule": {
+          "type": "object"
+        },
+        "scheduleId": {
+          "type": "string"
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        }
+      }
+    }
+  }
+}

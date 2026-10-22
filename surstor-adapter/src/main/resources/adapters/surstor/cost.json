@@ -1,0 +1,39 @@
+{
+  "name": "Cost summary",
+  "description": "Get the sum of recorded cost estimates and artifact counts, for one session or all sessions. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:cost",
+    "input": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session ID (omit for aggregate)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "totalUsd": {
+          "type": "string"
+        },
+        "artifactCount": {
+          "type": "integer"
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        },
+        "unpricedCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Records excluded because no cost was computed. Null for legacy sessions with unknown coverage."
+        }
+      }
+    }
+  }
+}

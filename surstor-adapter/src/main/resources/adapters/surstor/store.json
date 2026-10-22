@@ -1,0 +1,140 @@
+{
+  "name": "Store artifact",
+  "description": "Store an AI work artifact as a two-cell CAD3 evidence record. Cell 1 contains the content; Cell 2 contains provenance metadata with Merkle binding to Cell 1. Returns the artifact's public ID (Cell 2 hash). Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:store",
+    "input": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "Inspectable text or JSON content. For conversation use an object with prompt and response strings. Known secrets are rejected; use the node /capture review screen to redact and approve. Binary cells are blocked because the privacy filter cannot inspect them."
+        },
+        "contentType": {
+          "type": "string",
+          "enum": [
+            "text",
+            "conversation",
+            "tool-result",
+            "patch",
+            "model-output"
+          ],
+          "default": "text"
+        },
+        "sessionId": {
+          "type": "string",
+          "description": "Session identifier (default: 'default')"
+        },
+        "agentId": {
+          "type": "string",
+          "description": "Agent identifier (default: 'local-user')"
+        },
+        "modelVersion": {
+          "type": "string",
+          "description": "Exact provider-prefixed model ID from surstor_prices_get, e.g. anthropic/claude-sonnet-5, openai/gpt-6-astra, moonshot/kimi-k3, google/gemini-3.8-flash, deepseek/deepseek-flash, xai/grok-4.6."
+        },
+        "usage": {
+          "type": "object",
+          "description": "Normalized billable quantities, NOT a raw provider usage object. input excludes all cached/read/write tokens by default; output includes billable reasoning once. Required input/output, zero allowed. Additional charge names must match the selected tariff. See docs/billing.md.",
+          "properties": {
+            "input": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "output": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "cached-input": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "cache-write": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "cache-write-5m": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "cache-write-1h": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "cache-storage-token-hours": {
+              "type": "string",
+              "pattern": "^[0-9]+(\\.[0-9]{1,12})?$"
+            }
+          },
+          "required": [
+            "input",
+            "output"
+          ],
+          "additionalProperties": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "description": "Nonnegative decimal quantity; whole numbers except token-hours. Unsupported nonzero charge makes the event unpriced."
+          }
+        },
+        "billingContext": {
+          "type": "object",
+          "properties": {
+            "usage-time": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Actual request time in UTC epoch milliseconds. Required for DeepSeek time bands. Otherwise capture time is recorded as a labeled fallback."
+            },
+            "service-tier": {
+              "type": "string",
+              "default": "standard",
+              "description": "Exact tariff tier, e.g. standard, batch, flex, fast or priority. Unknown tiers are unpriced; no fallback."
+            },
+            "input-mode": {
+              "type": "string",
+              "enum": [
+                "exclusive",
+                "total"
+              ],
+              "default": "exclusive",
+              "description": "total means input includes cached-input and all cache-write counts; these are subtracted before billing ordinary input."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Full artifact ID (Cell 2 hash)"
+        },
+        "shortId": {
+          "type": "string",
+          "description": "Short artifact ID (ss_<12 hex>)"
+        },
+        "cell1Id": {
+          "type": "string",
+          "description": "Cell 1 hash"
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        },
+        "billing": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Signed v2 estimate/unpriced breakdown, quantities, context, source, tariff and warning. Null for legacy custom schedules."
+        }
+      }
+    }
+  }
+}

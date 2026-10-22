@@ -1,0 +1,24 @@
+{
+  "_comment": "REVIEW BEFORE RELEASE — placeholder rates. Refresh from provider pages before shipping.",
+  "_effective-date": "2026-08-01",
+  "anthropic/claude-sonnet-5": {
+    "input-per-1m": "3.00",
+    "output-per-1m": "15.00",
+    "cached-input-per-1m": "0.30"
+  },
+  "anthropic/claude-haiku-4-5": {
+    "input-per-1m": "0.25",
+    "output-per-1m": "1.25",
+    "cached-input-per-1m": "0.025"
+  },
+  "openai/gpt-5": {
+    "input-per-1m": "5.00",
+    "output-per-1m": "20.00",
+    "cached-input-per-1m": "0.50"
+  },
+  "openai/gpt-5-mini": {
+    "input-per-1m": "0.50",
+    "output-per-1m": "2.00",
+    "cached-input-per-1m": "0.05"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Retrieve artifact",
+  "description": "Retrieve a SurStor artifact by its full ID or short ID prefix. Returns the content and metadata from both cells. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:retrieve",
+    "input": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Full artifact ID (64 hex) or short ID (ss_<12 hex>)"
+        },
+        "shortId": {
+          "type": "string",
+          "description": "Short ID prefix"
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "Artifact content"
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Cell 2 metadata"
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        }
+      }
+    }
+  }
+}

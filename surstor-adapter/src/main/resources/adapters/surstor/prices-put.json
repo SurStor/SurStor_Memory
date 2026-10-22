@@ -1,0 +1,35 @@
+{
+  "name": "Put price schedule",
+  "description": "Install a versioned schedule for future records: legacy rates or v2 USD model tariffs with documented units, conditions and source URLs. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:prices/put",
+    "input": {
+      "type": "object",
+      "properties": {
+        "schedule": {
+          "description": "Price schedule map or JSON string",
+          "type": [
+            "object",
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "schedule"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "scheduleId": {
+          "type": "string"
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        }
+      }
+    }
+  }
+}

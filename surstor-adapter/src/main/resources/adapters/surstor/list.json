@@ -1,0 +1,47 @@
+{
+  "name": "List artifacts",
+  "description": "List SurStor artifacts, optionally filtered by session. Returns summaries with IDs, session, agent, timestamp, and cost. Costs are estimates from dated rates and caller usage; display the returned warning.",
+  "operation": {
+    "adapter": "surstor:list",
+    "input": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Filter by session ID"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Max results (1-1000)",
+          "default": 100
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Result offset",
+          "default": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "offset": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "warning": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Export session",
+  "description": "Export a portable surstor-export/1 bundle including signed cells and their exact cited schedules. Updated verifiers replay v1 and v2 billing without network access. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "operation": {
+    "adapter": "surstor:export",
+    "input": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session to export"
+        }
+      },
+      "required": [
+        "sessionId"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "description": "Bundle format marker (surstor-export/1)"
+        },
+        "session": {
+          "type": "object",
+          "description": "Session record (head, counts, totals)"
+        },
+        "artifacts": {
+          "type": "array",
+          "description": "cell1+cell2 pairs, chain head first"
+        },
+        "schedules": {
+          "type": "object",
+          "description": "Cited price schedules by hash"
+        },
+        "warning": {
+          "type": "string",
+          "description": "Display this pricing and calculation warning to the user."
+        }
+      }
+    }
+  }
+}

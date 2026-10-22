@@ -1,0 +1,25 @@
+[node]
+bind = "127.0.0.1"
+port = 8484
+data_dir = "~/.surstor-node"
+
+[identity]
+# created on first run
+keypair_file = "identity.ed25519"
+
+[surstor]
+default_agent_id = "local-user"
+session_budget_usd = "5.00"
+price_schedule = "builtin:2026-08"
+
+[search]
+# Local semantic search (on-node embeddings + vector index). The index lives
+# in <data_dir>/search-index and is disposable — surstor_reindex rebuilds it.
+enabled = "true"
+k_default = "10"
+
+[privacy]
+# Optional organisation-specific JSON policy, relative to this TOML file.
+# Built-in secret detection stays enabled when this is empty.
+# A configured file that is missing or invalid blocks capture.
+policy_file = ""
