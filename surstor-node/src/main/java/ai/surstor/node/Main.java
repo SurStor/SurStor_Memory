@@ -56,15 +56,15 @@ public class Main implements Callable<Integer> {
         @Option(names = {"-c", "--config"}) Path configPath = Path.of(System.getProperty("user.home"), ".surstor-node", "surstor.toml");
         @Option(names = {"-d", "--data-dir"}) Path dataDirOverride;
         @Option(names = {"-p", "--port"}) Integer portOverride;
+        @Option(names = "--allow-container-network", description = "Allow 0.0.0.0 inside an isolated container; publish the host port on loopback only")
+        boolean allowContainerNetwork;
 
         @Override
         public Integer call() throws Exception {
             NodeConfig cfg = NodeConfig.load(configPath);
             Path dataDir = (dataDirOverride != null) ? dataDirOverride : cfg.dataDir();
             int port = (portOverride != null) ? portOverride : cfg.port();
-            if (!java.util.Set.of("127.0.0.1", "::1", "localhost").contains(cfg.bindAddress())) {
-                throw new IllegalArgumentException("The capture review node requires a loopback bind address.");
-            }
+            validateBindAddress(cfg.bindAddress(), allowContainerNetwork);
             CaptureRoutes capture = new CaptureRoutes(cfg.privacyPolicyFile());
 
             AMap<AString, ACell> encryption = EncryptedStorage.policy(cfg, dataDir);
@@ -85,6 +85,10 @@ public class Main implements Callable<Integer> {
 
             // Launch venue
             VenueServer server = VenueServer.launch(venueConfig, java.util.List.of(capture::register));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                try { server.close(); }
+                catch (Exception e) { System.err.println("Venue shutdown failed; check storage before restarting."); }
+            }, "surstor-shutdown"));
             capture.attach(server.getEngine());
             System.out.println("SurStor node started at http://" + cfg.bindAddress() + ":" + port);
             System.out.println("MCP endpoint: http://" + cfg.bindAddress() + ":" + port + "/mcp");
@@ -162,6 +166,12 @@ public class Main implements Callable<Integer> {
 
     // ========== Helpers ==========
 
+    static void validateBindAddress(String bind, boolean allowContainerNetwork) {
+        if (java.util.Set.of("127.0.0.1", "::1", "localhost").contains(bind)) return;
+        if (allowContainerNetwork && "0.0.0.0".equals(bind)) return;
+        throw new IllegalArgumentException("Use a loopback bind, or explicitly allow 0.0.0.0 with --allow-container-network inside an isolated container.");
+    }
+
     static AKeyPair bootstrapIdentity(Path dataDir, NodeConfig cfg) throws IOException {
         // Anchor the keypair filename to the EFFECTIVE data dir — cfg.keypairFile()
         // resolves against the TOML data_dir and would ignore a -d override,
@@ -215,7 +225,7 @@ public class Main implements Callable<Integer> {
             Strings.create("store"), Strings.create(etchDir.toString()),
             Strings.create("seed"), Strings.create(keyPair.getSeed().toHexString()),
             // Loopback-only single-user node: anonymous local callers get full access.
-            // Safe only while bindAddress stays 127.0.0.1 — never widen the bind with this set.
+            // Container mode relies on isolated networking and a loopback-only host port.
             Strings.create("auth"), Maps.of(
                 Strings.create("public"), Maps.of(
                     Strings.create("caps"), Strings.create("unrestricted"))),
@@ -230,7 +240,7 @@ public class Main implements Callable<Integer> {
 
     private static Path findModuleJar() {
         // In development, the module jar is in surstor-adapter/target/
-        Path devPath = Path.of("surstor-adapter/target/surstor-adapter-0.2.0-alpha.1-module.jar");
+        Path devPath = Path.of("surstor-adapter/target/surstor-adapter-0.2.0-alpha.2-module.jar");
         if (Files.exists(devPath)) return devPath.toAbsolutePath();
 
         // When packaged, it should be alongside the CLI

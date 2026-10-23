@@ -10,6 +10,8 @@ the initial build require network access. After setup, choose local inference
 and avoid cloud fallback or connectors that forward memory outside the machine.
 Review your host's own network and telemetry settings separately.
 
+For Docker packaging and persistent volumes, see [the Docker guide](docker.md).
+
 ## 1. Build and start the node
 
 Install Git, Java 21+ and Maven 3.7+, and ensure `java -version` and `mvn -version`

@@ -1,0 +1,26 @@
+# Standalone alternative, not an override of compose.yaml.
+name: surstor-memory-encrypted
+services:
+  surstor:
+    image: surstor-memory:0.2.0-alpha.2-local
+    build: .
+    command: ["start", "--config", "/app/config/encrypted.toml", "--allow-container-network"]
+    ports:
+      - "127.0.0.1:8484:8484"
+    volumes:
+      - encrypted-memory:/data
+    secrets:
+      - source: etch-key
+        target: etch-key
+    read_only: true
+    tmpfs:
+      - /tmp:rw,exec,nosuid,size=1g,mode=1777
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    stop_grace_period: 60s
+    restart: unless-stopped
+volumes:
+  encrypted-memory:
+secrets:
+  etch-key:
+    file: ${SURSTOR_KEY_FILE:?Set SURSTOR_KEY_FILE to a protected file outside this repository}

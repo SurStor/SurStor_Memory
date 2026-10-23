@@ -1,0 +1,18 @@
+name: surstor-memory
+services:
+  surstor:
+    image: surstor-memory:0.2.0-alpha.2-local
+    build: .
+    ports:
+      - "127.0.0.1:8484:8484"
+    volumes:
+      - memory:/data
+    read_only: true
+    tmpfs:
+      - /tmp:rw,exec,nosuid,size=1g,mode=1777
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    stop_grace_period: 60s
+    restart: unless-stopped
+volumes:
+  memory:

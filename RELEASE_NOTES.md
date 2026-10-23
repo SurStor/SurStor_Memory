@@ -1,21 +1,20 @@
-# v0.2.0-alpha.1 â€” Developer Preview
+# v0.2.0-alpha.2 — Docker Developer Preview
 
-First public alpha of SurStor Memory, an external memory node for local models.
+- Docker packaging with a non-root Java runtime and persistent data volumes.
+- Localhost-only host port publishing and explicit container network opt-in.
+- Separate encrypted profile using a file-mounted key; semantic search stays disabled.
+- Graceful venue shutdown on container termination.
+- Registry-only Compose files for installations without Java or Maven.
+- GHCR publication workflow with release-JAR checksum verification and Linux container tests before pushing.
 
-- Store, retrieve and verify signed AI-work records through MCP.
-- Local semantic search over text records in the unencrypted profile.
-- Optional encrypted venue storage with session/ID retrieval; semantic search is disabled in this profile.
-- Prompt/response privacy filtering and a local review screen.
-- Portable session exports with offline verification.
+The local Java build passed 71 tests. See the container workflow for the separate
+Linux runtime test results and registry publication status. The image target is
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.2` for Linux amd64.
 
-## Installation and limitations
+## Build provenance and limitations
 
-See [the local-model guide](docs/local-models.md). A compatible Covia
-`0.9.6-SNAPSHOT` source build is required. Installation currently requires
-Java 21+, Maven and Git LFS; no prebuilt release binaries are supplied.
-The LM Studio walkthrough has not been tested end to end.
-
-This is a single-user, loopback-only developer preview. It does not provide
-user accounts, automatic memory supersession or configured node-to-node sync.
-Review the README and privacy documentation before use. APIs and storage
-behavior may change between alpha releases.
+This release packages maintainer-built JARs with committed SHA-256 checksums;
+it does not yet rebuild the compatible Covia snapshot from pinned upstream
+source in CI. The node remains single-user and requires trusted local clients.
+The image is not a hosted multi-user service. Read [the Docker guide](docs/docker.md)
+for installation, encryption keys, persistence and limitations.

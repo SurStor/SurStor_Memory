@@ -1,0 +1,12 @@
+# Allowlist: never send private data, Git history or keys to the image builder.
+**
+!Dockerfile
+!LICENSE
+!docker/
+!docker/*.toml
+!surstor-node/
+!surstor-node/target/
+!surstor-node/target/surstor-node.jar
+!surstor-adapter/
+!surstor-adapter/target/
+!surstor-adapter/target/surstor-adapter-0.2.0-alpha.2-module.jar

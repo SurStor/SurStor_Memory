@@ -1,0 +1,12 @@
+[node]
+bind = "0.0.0.0"
+port = "8484"
+data_dir = "/data"
+
+[encryption]
+enabled = true
+cipher = "aes-256-ctr"
+key_file = "/run/secrets/etch-key"
+
+[search]
+enabled = false

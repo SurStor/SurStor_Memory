@@ -4,7 +4,7 @@ Guidance for AI agents working in this repository.
 
 ## Overview
 
-SurStor Node (v0.2.0-alpha.1) — persistent external memory for locally run models, with
+SurStor Node (v0.2.0-alpha.2) — persistent external memory for locally run models, with
 tamper-evident records built as a Covia venue module. See `docs/local-models.md`
 for the primary installation and MCP workflow. Maven multi-module project:
 `surstor-adapter` (venue adapter, 12 MCP ops) and `surstor-node` (CLI packaging,

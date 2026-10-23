@@ -2,7 +2,7 @@
 
 **Website: [www.surstor.net](https://www.surstor.net)**
 
-**v0.2.0-alpha.1 · Developer Preview**
+**v0.2.0-alpha.2 · Developer Preview**
 
 Early software for testing and feedback. Features and interfaces may change;
 review the limitations below before storing important information.
@@ -11,13 +11,13 @@ Licensed under the [Apache License 2.0](LICENSE). Third-party dependencies and
 bundled assets remain subject to their respective licenses.
 
 Keep project decisions, useful answers and work history on your own hardware,
-then let your local AI retrieve them across conversations. SurStor Node (v0.2.0-alpha.1)
+then let your local AI retrieve them across conversations. SurStor Node (v0.2.0-alpha.2)
 provides persistent, inspectable external memory through MCP. Your model stays
 in your chosen inference application; SurStor stores and retrieves its memories.
 
 **[Start here: install alongside a local model and connect MCP](docs/local-models.md)**
 — includes an LM Studio setup, a save-and-recall example, and Ollama integration
-requirements. Keep using your tools as always.
+requirements. For container packaging, see [Run with Docker](docs/docker.md). Keep using your tools as always.
 
 ```text
 Local model <-> MCP-capable chat or agent application
@@ -170,7 +170,7 @@ versioned billing and tariff boundaries, offline export verification,
 embedding determinism/similarity, Lucene index
 behaviour, and engine-backed semantic search (store→search→reindex).
 
-## Local semantic search (v0.2.0-alpha.1)
+## Local semantic search (v0.2.0-alpha.2)
 
 `surstor_search` ranks stored artifacts by meaning, not just by ID — e.g.
 "when is the project due" finds the client-deadline email. Everything runs
@@ -201,7 +201,7 @@ k_default = "10"
 Note: the adapter module jar grows by ~190 MB (ONNX native binaries +
 bundled model). Accepted for v0.2.
 
-## Caveats (v0.2.0-alpha.1)
+## Caveats (v0.2.0-alpha.2)
 
 - The current price schedule is a dated estimate snapshot, not a live price feed.
   The original August placeholder file is retained unchanged for historical

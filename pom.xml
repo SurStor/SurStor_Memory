@@ -6,7 +6,7 @@
 
     <groupId>ai.surstor</groupId>
     <artifactId>surstor-node-parent</artifactId>
-    <version>0.2.0-alpha.1</version>
+    <version>0.2.0-alpha.2</version>
     <packaging>pom</packaging>
 
     <name>SurStor Node</name>
