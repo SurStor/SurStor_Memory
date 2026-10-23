@@ -79,6 +79,21 @@ tool charges, service tiers, context thresholds and time-dependent rates.
 See **[Billing and pricing documentation](docs/billing.md)** for official sources,
 rates, caller examples, exclusions, migration and verification behavior.
 
+## Run with Docker
+
+A public Linux amd64 image is available at
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.2`. From this checkout:
+
+```sh
+docker compose -f compose.registry.yaml pull
+docker compose -f compose.registry.yaml up -d
+```
+
+Connect MCP at `http://127.0.0.1:8484/mcp`. This default profile uses unencrypted
+storage with local semantic search. For encrypted storage and backup guidance,
+see [the Docker guide](docs/docker.md). The container needs no Java or Maven
+installation on the host. Docker Desktop and ARM64 remain untested.
+
 ## Build & run
 
 Requires Java 21+ and Maven 3.7+. **Covia `0.9.6-SNAPSHOT` is the default

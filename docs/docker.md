@@ -2,15 +2,14 @@
 
 The container runs the SurStor node alongside your existing local model. It
 includes the node, adapter and embedding model, not the LLM itself. This is
-developer-preview packaging. The versioned registry target is
-`ghcr.io/surstor/surstor-memory:0.2.0-alpha.2` (Linux amd64). Publication is
-gated by the GitHub Actions container tests; check the release and workflow
-status before pulling.
+developer-preview packaging. The public image is
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.2` (Linux amd64).
+[The publishing run](https://github.com/SurStor/SurStor_Memory/actions/runs/39882817558)
+passed the standard and encrypted Linux container tests before pushing it.
 
 ## Run the published image
 
-Once the container workflow has succeeded and the GHCR package is public,
-use the registry-only Compose file from this repository:
+Use the registry-only Compose file from this repository; no registry login is required:
 
 ```sh
 docker compose -f compose.registry.yaml pull
@@ -158,9 +157,13 @@ Before trusting a deployment:
 6. With the encrypted service stopped, verify missing/wrong-key startup fails;
    restore the original key before proceeding. Use disposable test volumes for this check.
 
-Docker was not installed on the development machine used to prepare these files.
-Java build/test results do not substitute for these Linux container checks.
-The image and Compose runtime still need validation on a Docker-enabled host.
+Docker was not installed on the development workstation. GitHub Actions on
+Ubuntu successfully built the image and tested standard/encrypted startup,
+MCP save/retrieve/verify, persistence across restart, text search in the standard
+profile and absence of a plaintext search index in the encrypted profile.
+Missing/wrong-key behavior is covered by Java tests; the container smoke test
+does not yet exercise those negative cases. Docker Desktop and ARM64 have not
+been tested. Anonymous registry manifest access was verified after publication.
 
 ## Maintainer publication
 
