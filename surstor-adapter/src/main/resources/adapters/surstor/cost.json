@@ -1,6 +1,6 @@
 {
   "name": "Cost summary",
-  "description": "Get the sum of recorded cost estimates and artifact counts, for one session or all sessions. Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
+  "description": "Get the sum of recorded cost estimates and artifact counts, for one session or all local sessions (replicated chain views are excluded from the aggregate to avoid double counting shared ancestors). Estimates from dated published rates and caller-supplied usage, not provider invoices. Unpriced records are excluded from totals. See docs/billing.md; return the warning to the user.",
   "operation": {
     "adapter": "surstor:cost",
     "input": {
@@ -32,6 +32,10 @@
             "null"
           ],
           "description": "Records excluded because no cost was computed. Null for legacy sessions with unknown coverage."
+        },
+        "scope": {
+          "type": "string",
+          "description": "local-sessions for an aggregate; omitted for a specific session."
         }
       }
     }

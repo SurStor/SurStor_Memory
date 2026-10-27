@@ -1,3 +1,16 @@
+## Unreleased — selected-memory synchronization
+
+- Add opt-in, authenticated, bidirectional record sync between trusted single-user
+  nodes, using Convex CAS merge and existing Covia storage. Separate loopback sync
+  listener; remote use requires SSH tunneling or HTTPS termination.
+- Preserve original signatures/IDs, allow relaying, validate scope and privacy
+  before import/export, and keep local signing/encryption keys independent.
+- Expose complete remote chains as read-only session views; preserve forks.
+  Global cost totals now explicitly cover local sessions only.
+- Serialize local stores to avoid simultaneous capture losing a session head.
+- See [node sync](docs/node-sync.md) for configuration, limits and validation.
+  This feature is not in the published alpha.2 binaries or Docker image.
+
 # v0.2.0-alpha.2 — Docker Developer Preview
 
 - Docker packaging with a non-root Java runtime and persistent data volumes.

@@ -227,7 +227,14 @@ public final class NodeConfig {
         }
     }
 
-    private String get(String section, String key, String defaultValue) {
+    void validateSyncKeys() {
+        for (String key : sections.getOrDefault("sync", Map.of()).keySet()) {
+            if (!java.util.Set.of("enabled", "port", "interval_seconds", "token_file", "sessions", "trusted_signers", "peers").contains(key))
+                throw new IllegalArgumentException("Unknown sync setting: " + key);
+        }
+    }
+
+    String get(String section, String key, String defaultValue) {
         Map<String, String> s = sections.get(section);
         if (s == null) return defaultValue;
         return s.getOrDefault(key, defaultValue);

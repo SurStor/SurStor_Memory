@@ -65,6 +65,7 @@ public class Main implements Callable<Integer> {
             Path dataDir = (dataDirOverride != null) ? dataDirOverride : cfg.dataDir();
             int port = (portOverride != null) ? portOverride : cfg.port();
             validateBindAddress(cfg.bindAddress(), allowContainerNetwork);
+            SyncConfig syncConfig = SyncConfig.load(cfg, configPath);
             CaptureRoutes capture = new CaptureRoutes(cfg.privacyPolicyFile());
 
             AMap<AString, ACell> encryption = EncryptedStorage.policy(cfg, dataDir);
@@ -74,6 +75,7 @@ public class Main implements Callable<Integer> {
             AKeyPair keyPair = bootstrapIdentity(dataDir, cfg);
             String did = "did:key:" + keyPair.getAccountKey().toString();
             System.out.println("SurStor node identity: " + did);
+            System.out.println("Sync signer public key: " + keyPair.getAccountKey().toHexString());
 
             // Build venue config
             AMap<AString, ACell> venueConfig = buildVenueConfig(cfg, dataDir, port, keyPair);
@@ -85,11 +87,15 @@ public class Main implements Callable<Integer> {
 
             // Launch venue
             VenueServer server = VenueServer.launch(venueConfig, java.util.List.of(capture::register));
+            MemorySync sync = syncConfig == null ? null : new MemorySync(server.getEngine(), syncConfig);
+            try { if (sync != null) sync.start(); }
+            catch (Exception e) { if (sync != null) sync.close(); server.close(); throw e; }
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                try { server.close(); }
+                try { if (sync != null) sync.close(); server.close(); }
                 catch (Exception e) { System.err.println("Venue shutdown failed; check storage before restarting."); }
             }, "surstor-shutdown"));
             capture.attach(server.getEngine());
+            if (sync != null) System.out.println("Selected-memory sync on 127.0.0.1:" + syncConfig.port() + "; secure tunnel or HTTPS proxy required for remote access.");
             System.out.println("SurStor node started at http://" + cfg.bindAddress() + ":" + port);
             System.out.println("MCP endpoint: http://" + cfg.bindAddress() + ":" + port + "/mcp");
             System.out.println("Capture review: http://" + cfg.bindAddress() + ":" + port + "/capture");

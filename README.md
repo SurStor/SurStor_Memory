@@ -45,6 +45,14 @@ and `config/surstor-encrypted.toml`. This opt-in profile encrypts Etch records a
 its index, requires an external key, and disables the separate plaintext semantic
 search index. Existing configurations do not automatically become encrypted.
 
+## Optional multi-node memory sync (unreleased source feature)
+
+This checkout includes opt-in bidirectional sync of selected signed memories
+between trusted nodes, including relaying through a server. Each node retains
+its own identity and encryption key. See [setup, security and limits](docs/node-sync.md).
+Build from source to test it; the published alpha.2 image and JARs do not include
+this feature. Whole-venue replication and deletion propagation are not enabled.
+
 ## What it does
 
 Memory has an evidence trail: you can retrieve the original saved content and
@@ -149,7 +157,7 @@ All twelve operations are exposed as MCP tools at `http://127.0.0.1:8484/mcp`
 | `surstor_verify` | Check branch-ref, session chain (deep), schedule, signature |
 | `surstor_list` | List artifacts, optionally by session |
 | `surstor_diff` | Unified diff between two text artifacts |
-| `surstor_cost` | Cost rollup for a session or all sessions |
+| `surstor_cost` | Cost rollup for one session or all local sessions |
 | `surstor_sessions` | List sessions with chain head, counts, totals |
 | `surstor_export` | Export a session as a portable, offline-verifiable JSON bundle |
 | `surstor_prices_get` | Show the active price schedule |
@@ -230,4 +238,5 @@ bundled model). Accepted for v0.2.
 - Local model identifiers without a matching API tariff remain unpriced, not
   zero-cost. SurStor does not estimate electricity or hardware costs.
 - Automatic memory supersession, a user-facing deletion workflow, multi-user
-  isolation and node-to-node synchronization are not provided by this release.
+  isolation are not provided by this release. Node-to-node synchronization is an
+  unreleased, opt-in source feature; see the guide above.

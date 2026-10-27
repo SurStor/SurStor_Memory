@@ -105,3 +105,15 @@ record.
 `Engine` does not read the `"store"` config key; etch persistence is wired in
 `VenueServer.createStore`. Engine-level persistence tests must launch
 `VenueServer` (see `RestartPersistenceTest`), not `Engine.createTemp`.
+
+### Selected-memory sync bridge (unreleased)
+
+The installed Covia 0.9.6-SNAPSHOT constructs its NodeServer with port(-1).
+Its venue value uses single-authoritative-writer, whole-value LWW semantics.
+SurStor therefore keeps venue identities independent and reuses CASLattice for
+selected immutable record union, with a separate authenticated HTTP transport.
+This does not enable the native lattice wire protocol. Incoming cells are
+registered in the local single-user public asset namespace after signature,
+billing and privacy verification, without JobManager input persistence.
+Read-only derived session aliases are adapter-workspace state; no shared root,
+private keys, secrets, or jobs are exposed. See docs/node-sync.md.

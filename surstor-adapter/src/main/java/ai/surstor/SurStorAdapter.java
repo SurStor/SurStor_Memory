@@ -123,7 +123,7 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
 
     // ========== surstor/store ==========
 
-    private ACell handleStore(ACell input, RequestContext ctx) {
+    private synchronized ACell handleStore(ACell input, RequestContext ctx) {
         // Defence in depth for embedded callers. HTTP ingress must also filter
         // before Covia's JobManager can persist an invocation input.
         ACell policyFile = RT.getIn(engine.adapterConfig(getName()), Strings.create("privacy-policy-file"));
@@ -138,6 +138,7 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
         if (contentCell == null) throw new IllegalArgumentException("content is required");
         String contentType = (contentTypeCell instanceof AString) ? contentTypeCell.toString() : "text";
         String sessionId = (sessionIdCell instanceof AString) ? sessionIdCell.toString() : "default";
+        if (sessionId.startsWith("sync-")) throw new IllegalArgumentException("Replicated sessions are read-only; use a new local session");
         String agentId = (agentIdCell instanceof AString) ? agentIdCell.toString() : getDefaultAgentId();
         String modelVersion = (modelVersionCell instanceof AString) ? modelVersionCell.toString() : null;
 
@@ -401,7 +402,7 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
                 Strings.create("sessionId"), Strings.create(sessionId));
         }
 
-        // Aggregate across all sessions
+        // Aggregate local sessions only; replicated fork views can share ancestors.
         AMap<AString, ACell> sessions = getAllSessions(ctx);
         String total = "0.000000";
         long artifactCount = 0;
@@ -409,6 +410,7 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
         boolean coverageKnown = true;
 
         for (ACell k : sessions.keySet()) {
+            if (k.toString().startsWith("sync-")) continue;
             ACell v = sessions.get(k);
             if (!(v instanceof AMap)) continue;
             AMap<AString, ACell> session = RT.ensureMap(v);
@@ -421,6 +423,7 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
 
         return Maps.of(
             Strings.create(K_TOTAL_USD), Strings.create(total),
+            Strings.create("scope"), Strings.create("local-sessions"),
             Strings.create("warning"), Strings.create(Billing.WARNING),
             Strings.create("unpricedCount"), coverageKnown ? CVMLong.create(unpricedCount) : null,
             Strings.create(K_ARTIFACT_COUNT), CVMLong.create(artifactCount));
@@ -439,6 +442,9 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
             String sessionId = k.toString();
             AMap<AString, ACell> summary = Maps.of(
                 Strings.create("sessionId"), Strings.create(sessionId),
+                Strings.create("sourceSession"), session.get(Strings.create("source-session")),
+                Strings.create("sourceSigner"), session.get(Strings.create("source-signer")),
+                Strings.create("readOnly"), CVMBool.create(sessionId.startsWith("sync-")),
                 Strings.create("head"), session.get(Sessions.K_HEAD),
                 Strings.create("count"), session.get(Sessions.K_COUNT),
                 Strings.create("artifactCount"), session.get(Sessions.K_ARTIFACT_COUNT),
@@ -588,7 +594,7 @@ public class SurStorAdapter extends AAdapter implements AutoCloseable {
 
     // ========== surstor/reindex ==========
 
-    private ACell handleReindex(ACell input, RequestContext ctx) {
+    private synchronized ACell handleReindex(ACell input, RequestContext ctx) {
         SearchState s = searchState();
         long t0 = System.nanoTime();
         long reindexed = 0;
