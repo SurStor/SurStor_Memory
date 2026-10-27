@@ -229,7 +229,7 @@ public final class NodeConfig {
 
     void validateSyncKeys() {
         for (String key : sections.getOrDefault("sync", Map.of()).keySet()) {
-            if (!java.util.Set.of("enabled", "port", "interval_seconds", "token_file", "sessions", "trusted_signers", "peers").contains(key))
+            if (!java.util.Set.of("enabled", "bind", "port", "interval_seconds", "token_file", "sessions", "trusted_signers", "peers").contains(key))
                 throw new IllegalArgumentException("Unknown sync setting: " + key);
         }
     }

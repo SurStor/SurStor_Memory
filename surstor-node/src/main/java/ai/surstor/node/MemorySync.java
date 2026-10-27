@@ -79,7 +79,7 @@ final class MemorySync implements AutoCloseable {
                 status = "blocked: validation, privacy policy, capacity, or storage failure";
                 ctx.status(422).result("Sync rejected; no unvalidated records accepted");
             });
-        }).start("127.0.0.1", config.port());
+        }).start(config.bind(), config.port());
         worker.scheduleWithFixedDelay(this::tick, 0, config.intervalSeconds(), TimeUnit.SECONDS);
     }
 

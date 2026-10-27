@@ -2,7 +2,7 @@
 
 **Website: [www.surstor.net](https://www.surstor.net)**
 
-**v0.2.0-alpha.2 · Developer Preview**
+**v0.2.0-alpha.3 · Developer Preview**
 
 Early software for testing and feedback. Features and interfaces may change;
 review the limitations below before storing important information.
@@ -11,7 +11,7 @@ Licensed under the [Apache License 2.0](LICENSE). Third-party dependencies and
 bundled assets remain subject to their respective licenses.
 
 Keep project decisions, useful answers and work history on your own hardware,
-then let your local AI retrieve them across conversations. SurStor Node (v0.2.0-alpha.2)
+then let your local AI retrieve them across conversations. SurStor Node (v0.2.0-alpha.3)
 provides persistent, inspectable external memory through MCP. Your model stays
 in your chosen inference application; SurStor stores and retrieves its memories.
 
@@ -45,13 +45,13 @@ and `config/surstor-encrypted.toml`. This opt-in profile encrypts Etch records a
 its index, requires an external key, and disables the separate plaintext semantic
 search index. Existing configurations do not automatically become encrypted.
 
-## Optional multi-node memory sync (unreleased source feature)
+## Optional multi-node memory sync
 
 This checkout includes opt-in bidirectional sync of selected signed memories
 between trusted nodes, including relaying through a server. Each node retains
 its own identity and encryption key. See [setup, security and limits](docs/node-sync.md).
-Build from source to test it; the published alpha.2 image and JARs do not include
-this feature. Whole-venue replication and deletion propagation are not enabled.
+Available in alpha.3, with an optional Docker sync overlay. Whole-venue
+replication and deletion propagation are not enabled.
 
 ## What it does
 
@@ -90,7 +90,7 @@ rates, caller examples, exclusions, migration and verification behavior.
 ## Run with Docker
 
 A public Linux amd64 image is available at
-`ghcr.io/surstor/surstor-memory:0.2.0-alpha.2`. From this checkout:
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.3`. From this checkout:
 
 ```sh
 docker compose -f compose.registry.yaml pull
@@ -193,7 +193,7 @@ versioned billing and tariff boundaries, offline export verification,
 embedding determinism/similarity, Lucene index
 behaviour, and engine-backed semantic search (store→search→reindex).
 
-## Local semantic search (v0.2.0-alpha.2)
+## Local semantic search (v0.2.0-alpha.3)
 
 `surstor_search` ranks stored artifacts by meaning, not just by ID — e.g.
 "when is the project due" finds the client-deadline email. Everything runs
@@ -224,7 +224,7 @@ k_default = "10"
 Note: the adapter module jar grows by ~190 MB (ONNX native binaries +
 bundled model). Accepted for v0.2.
 
-## Caveats (v0.2.0-alpha.2)
+## Caveats (v0.2.0-alpha.3)
 
 - The current price schedule is a dated estimate snapshot, not a live price feed.
   The original August placeholder file is retained unchanged for historical
@@ -239,4 +239,4 @@ bundled model). Accepted for v0.2.
   zero-cost. SurStor does not estimate electricity or hardware costs.
 - Automatic memory supersession, a user-facing deletion workflow, multi-user
   isolation are not provided by this release. Node-to-node synchronization is an
-  unreleased, opt-in source feature; see the guide above.
+  opt-in developer-preview feature; see the guide above.

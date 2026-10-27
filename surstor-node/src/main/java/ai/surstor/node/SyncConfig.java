@@ -7,12 +7,21 @@ import java.util.*;
 
 /** Explicit, fail-closed trusted-group replication policy. */
 record SyncConfig(int port, int intervalSeconds, String token, Set<String> sessions,
-                  Set<String> signers, List<URI> peers, String privacyPolicy) {
+                  Set<String> signers, List<URI> peers, String privacyPolicy, String bind) {
+    SyncConfig(int port, int intervalSeconds, String token, Set<String> sessions,
+            Set<String> signers, List<URI> peers, String privacyPolicy) {
+        this(port, intervalSeconds, token, sessions, signers, peers, privacyPolicy, "127.0.0.1");
+    }
     static SyncConfig load(NodeConfig cfg, Path configFile) throws Exception {
+        return load(cfg, configFile, false);
+    }
+    static SyncConfig load(NodeConfig cfg, Path configFile, boolean allowContainerNetwork) throws Exception {
         cfg.validateSyncKeys();
         String enabled = cfg.get("sync", "enabled", "false");
         if (!Set.of("true", "false").contains(enabled)) throw new IllegalArgumentException("Invalid sync.enabled");
         if (enabled.equals("false")) return null;
+        String bind = cfg.get("sync", "bind", "127.0.0.1");
+        Main.validateBindAddress(bind, allowContainerNetwork);
         int port = Integer.parseInt(cfg.get("sync", "port", "8485"));
         int interval = Integer.parseInt(cfg.get("sync", "interval_seconds", "15"));
         if (port < 1 || port > 65535 || interval < 5 || interval > 3600)
@@ -41,7 +50,7 @@ record SyncConfig(int port, int intervalSeconds, String token, Set<String> sessi
             peers.add(URI.create(value.replaceAll("/$", "")));
         }
         ai.surstor.PrivacyFilter.load(cfg.privacyPolicyFile());
-        return new SyncConfig(port, interval, token, Set.copyOf(sessions), Set.copyOf(signers), List.copyOf(peers), cfg.privacyPolicyFile());
+        return new SyncConfig(port, interval, token, Set.copyOf(sessions), Set.copyOf(signers), List.copyOf(peers), cfg.privacyPolicyFile(), bind);
     }
     private static Set<String> csv(String value) {
         Set<String> result = new LinkedHashSet<>();

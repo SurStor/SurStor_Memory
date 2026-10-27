@@ -1,0 +1,17 @@
+# Optional overlay for either registry Compose profile. The same project/data volume is retained.
+services:
+  surstor:
+    command: ["start", "--config", "/run/surstor/sync.toml", "--allow-container-network"]
+    ports:
+      - "127.0.0.1:8485:8485"
+    volumes:
+      - type: bind
+        source: ${SURSTOR_SYNC_CONFIG:?Set SURSTOR_SYNC_CONFIG to your complete protected node TOML file}
+        target: /run/surstor/sync.toml
+        read_only: true
+    secrets:
+      - source: sync-token
+        target: sync-token
+secrets:
+  sync-token:
+    file: ${SURSTOR_SYNC_TOKEN_FILE:?Set SURSTOR_SYNC_TOKEN_FILE to your protected sync token file}

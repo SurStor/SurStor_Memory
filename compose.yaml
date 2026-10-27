@@ -1,7 +1,7 @@
 name: surstor-memory
 services:
   surstor:
-    image: surstor-memory:0.2.0-alpha.2-local
+    image: surstor-memory:0.2.0-alpha.3-local
     build: .
     ports:
       - "127.0.0.1:8484:8484"

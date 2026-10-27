@@ -65,7 +65,7 @@ public class Main implements Callable<Integer> {
             Path dataDir = (dataDirOverride != null) ? dataDirOverride : cfg.dataDir();
             int port = (portOverride != null) ? portOverride : cfg.port();
             validateBindAddress(cfg.bindAddress(), allowContainerNetwork);
-            SyncConfig syncConfig = SyncConfig.load(cfg, configPath);
+            SyncConfig syncConfig = SyncConfig.load(cfg, configPath, allowContainerNetwork);
             CaptureRoutes capture = new CaptureRoutes(cfg.privacyPolicyFile());
 
             AMap<AString, ACell> encryption = EncryptedStorage.policy(cfg, dataDir);
@@ -95,7 +95,7 @@ public class Main implements Callable<Integer> {
                 catch (Exception e) { System.err.println("Venue shutdown failed; check storage before restarting."); }
             }, "surstor-shutdown"));
             capture.attach(server.getEngine());
-            if (sync != null) System.out.println("Selected-memory sync on 127.0.0.1:" + syncConfig.port() + "; secure tunnel or HTTPS proxy required for remote access.");
+            if (sync != null) System.out.println("Selected-memory sync on " + syncConfig.bind() + ":" + syncConfig.port() + "; secure tunnel or HTTPS proxy required for remote access.");
             System.out.println("SurStor node started at http://" + cfg.bindAddress() + ":" + port);
             System.out.println("MCP endpoint: http://" + cfg.bindAddress() + ":" + port + "/mcp");
             System.out.println("Capture review: http://" + cfg.bindAddress() + ":" + port + "/capture");
@@ -246,7 +246,7 @@ public class Main implements Callable<Integer> {
 
     private static Path findModuleJar() {
         // In development, the module jar is in surstor-adapter/target/
-        Path devPath = Path.of("surstor-adapter/target/surstor-adapter-0.2.0-alpha.2-module.jar");
+        Path devPath = Path.of("surstor-adapter/target/surstor-adapter-0.2.0-alpha.3-module.jar");
         if (Files.exists(devPath)) return devPath.toAbsolutePath();
 
         // When packaged, it should be alongside the CLI

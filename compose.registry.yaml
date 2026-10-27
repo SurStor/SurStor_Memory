@@ -1,7 +1,7 @@
 name: surstor-memory
 services:
   surstor:
-    image: ghcr.io/surstor/surstor-memory:0.2.0-alpha.2
+    image: ghcr.io/surstor/surstor-memory:0.2.0-alpha.3
     ports:
       - "127.0.0.1:8484:8484"
     volumes:

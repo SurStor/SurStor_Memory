@@ -10,12 +10,12 @@ LABEL org.opencontainers.image.source="https://github.com/SurStor/SurStor_Memory
 LABEL org.opencontainers.image.licenses="Apache-2.0"
 WORKDIR /app
 COPY surstor-node/target/surstor-node.jar /app/surstor-node.jar
-COPY surstor-adapter/target/surstor-adapter-0.2.0-alpha.2-module.jar /app/modules/surstor-adapter-module.jar
+COPY surstor-adapter/target/surstor-adapter-0.2.0-alpha.3-module.jar /app/modules/surstor-adapter-module.jar
 COPY docker/*.toml /app/config/
 COPY LICENSE /app/LICENSE
 ENV HOME=/data DJL_CACHE_DIR=/tmp/djl
 USER 10001:10001
-EXPOSE 8484
+EXPOSE 8484 8485
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
     CMD curl --fail --silent --output /dev/null http://127.0.0.1:8484/capture || exit 1
 ENTRYPOINT ["java", "-jar", "/app/surstor-node.jar"]

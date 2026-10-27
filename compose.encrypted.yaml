@@ -2,7 +2,7 @@
 name: surstor-memory-encrypted
 services:
   surstor:
-    image: surstor-memory:0.2.0-alpha.2-local
+    image: surstor-memory:0.2.0-alpha.3-local
     build: .
     command: ["start", "--config", "/app/config/encrypted.toml", "--allow-container-network"]
     ports:

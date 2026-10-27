@@ -1,5 +1,5 @@
 # Append this section to an existing node config. See docs/node-sync.md.
-# Public release 0.2.0-alpha.2 does not include this unreleased source feature.
+# Available in alpha.3; disabled until explicitly configured.
 [sync]
 enabled = false
 port = 8485

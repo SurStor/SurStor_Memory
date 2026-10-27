@@ -1,0 +1,17 @@
+# Copy outside the repository, fill public keys, and enable sync.
+# For an encrypted volume, also copy the encryption section from encrypted.toml.
+[node]
+bind = "0.0.0.0"
+port = 8484
+data_dir = "/data"
+[search]
+enabled = false
+[sync]
+enabled = false
+bind = "0.0.0.0"
+port = 8485
+interval_seconds = 15
+token_file = "/run/secrets/sync-token"
+sessions = "shared-memory"
+trusted_signers = "REPLACE_WITH_COMMA_SEPARATED_PUBLIC_KEYS"
+peers = ""

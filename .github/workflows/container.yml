@@ -7,7 +7,7 @@ on:
       tag:
         description: Existing release tag to build
         required: true
-        default: v0.2.0-alpha.2
+        default: v0.2.0-alpha.3
 permissions:
   contents: read
   packages: write
@@ -35,11 +35,15 @@ jobs:
           docker compose config --quiet
           keyfile=$(mktemp)
           SURSTOR_KEY_FILE="$keyfile" docker compose -f compose.encrypted.yaml config --quiet
+          SURSTOR_SYNC_CONFIG="$keyfile" SURSTOR_SYNC_TOKEN_FILE="$keyfile" docker compose -f compose.registry.yaml -f compose.sync.yaml config --quiet
+          SURSTOR_KEY_FILE="$keyfile" SURSTOR_SYNC_CONFIG="$keyfile" SURSTOR_SYNC_TOKEN_FILE="$keyfile" docker compose -f compose.registry.encrypted.yaml -f compose.sync.yaml config --quiet
           rm "$keyfile"
       - name: Build Linux amd64 image
         run: docker build --platform linux/amd64 -t surstor-ci .
       - name: Test containers before publishing
         run: python3 docker/smoke_test.py surstor-ci
+      - name: Test encrypted sync containers
+        run: python3 docker/sync_smoke_test.py surstor-ci
       - name: Publish versioned image
         env:
           GH_TOKEN: ${{ github.token }}

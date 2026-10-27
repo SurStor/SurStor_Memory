@@ -1,15 +1,15 @@
 {
-  "tag": "v0.2.0-alpha.2",
+  "tag": "v0.2.0-alpha.3",
   "artifacts": [
     {
       "name": "surstor-node.jar",
       "path": "surstor-node/target/surstor-node.jar",
-      "sha256": "7498a2cb74233eb76b29c27d7036111fccc2b7ad61a6462a3c4c3f548c117ef4"
+      "sha256": "5947d66d09ce792c834c7f5e8a079ac8890a78e8debe3d91023f08a5a09e020d"
     },
     {
-      "name": "surstor-adapter-0.2.0-alpha.2-module.jar",
-      "path": "surstor-adapter/target/surstor-adapter-0.2.0-alpha.2-module.jar",
-      "sha256": "bc650eec1461467fecf113920f22ce1e69ffc0e7fc435e6ec7e9062192e87f7f"
+      "name": "surstor-adapter-0.2.0-alpha.3-module.jar",
+      "path": "surstor-adapter/target/surstor-adapter-0.2.0-alpha.3-module.jar",
+      "sha256": "daa0e0f62ed8a4ba86e3404a9cd02507ff23d8c2253a5ccf83f08229fa326ff4"
     }
   ]
 }

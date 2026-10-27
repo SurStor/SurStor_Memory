@@ -106,7 +106,7 @@ record.
 `VenueServer.createStore`. Engine-level persistence tests must launch
 `VenueServer` (see `RestartPersistenceTest`), not `Engine.createTemp`.
 
-### Selected-memory sync bridge (unreleased)
+### Selected-memory sync bridge (alpha.3)
 
 The installed Covia 0.9.6-SNAPSHOT constructs its NodeServer with port(-1).
 Its venue value uses single-authoritative-writer, whole-value LWW semantics.

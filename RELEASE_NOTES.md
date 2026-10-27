@@ -1,4 +1,4 @@
-## Unreleased — selected-memory synchronization
+# v0.2.0-alpha.3 â€” selected-memory synchronization
 
 - Add opt-in, authenticated, bidirectional record sync between trusted single-user
   nodes, using Convex CAS merge and existing Covia storage. Separate loopback sync
@@ -9,9 +9,10 @@
   Global cost totals now explicitly cover local sessions only.
 - Serialize local stores to avoid simultaneous capture losing a session head.
 - See [node sync](docs/node-sync.md) for configuration, limits and validation.
-  This feature is not in the published alpha.2 binaries or Docker image.
+- Include sync in the alpha.3 image and JARs. Optional Compose overlay mounts
+  configuration and a protected token; host ports remain localhost-only.
 
-# v0.2.0-alpha.2 — Docker Developer Preview
+# v0.2.0-alpha.2 â€” Docker Developer Preview
 
 - Docker packaging with a non-root Java runtime and persistent data volumes.
 - Localhost-only host port publishing and explicit container network opt-in.

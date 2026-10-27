@@ -1,8 +1,8 @@
-# Bidirectional memory sync (unreleased developer preview)
+# Bidirectional memory sync (alpha.3 developer preview)
 
 This source checkout can synchronize selected SurStor memories between two or
-more trusted, single-user nodes. The published `0.2.0-alpha.2` image and release
-JARs do **not** contain this feature. Build this checkout with `mvn package`.
+more trusted, single-user nodes. Available in the `0.2.0-alpha.3` image and release JARs, or build this
+checkout with `mvn package`. For containers see [Docker sync](docker.md#optional-memory-sync).
 
 Each device retains its own signing identity and storage encryption key. Nodes
 exchange missing signed records in both directions. A laptop can initiate all
@@ -87,8 +87,8 @@ part of the exchange.
    ```sh
    ssh -N -L 18485:127.0.0.1:8485 user@your-server
    ```
-   SSH encrypts and authenticates the connection. The sync listener always
-   binds `127.0.0.1`; it does not expose the MCP server or capture screen. For an
+   SSH encrypts and authenticates the connection. The native sync listener defaults to
+   `127.0.0.1`; it does not expose the MCP server or capture screen. For an
    alternative deployment, proxy **only** the dedicated sync listener through
    HTTPS with a valid certificate. Peer URLs allow HTTPS, or HTTP to numeric
    loopback addresses only. HTTP redirects are not followed.
@@ -165,13 +165,12 @@ backups. Synchronization is not a complete node backup.
   efficient incremental indexing are future improvements.
 - Append-only replication. No deletion/tombstone propagation, automatic memory
   supersession, multi-user account mapping, per-peer ACLs or one-way mode yet.
-- Worker errors retry on the configured interval (5–3,600 seconds). A rejected
+- Worker errors retry on the configured interval (5â€“3,600 seconds). A rejected
   record can block that peer's remaining exchange for the cycle; correct the
   trust/privacy policy or remove the problematic collection from scope.
-- The current Docker Compose examples publish only MCP and use the old released
-  image. Use a host Java process for this preview. The loopback-only sync listener
-  inside a container is not reachable through a normal Docker port mapping;
-  container networking and a new published image need a separate tested release.
+- Docker alpha.3 supports an optional `compose.sync.yaml` overlay. Inside an
+  isolated container only, `sync.bind = "0.0.0.0"` requires the explicit
+  `--allow-container-network` flag. Publish the host sync port on loopback.
 - Do not publish the existing unrestricted MCP port to enable sync.
 
 Validation covers three-node relay, bidirectional exchange, independent offline

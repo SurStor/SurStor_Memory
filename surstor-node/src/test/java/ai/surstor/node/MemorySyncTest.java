@@ -195,6 +195,9 @@ class MemorySyncTest {
         assertThrows(Exception.class, () -> SyncConfig.load(NodeConfig.load(file), file));
         Files.writeString(file, base + "peers = \"http://127.0.0.1:18485\"\n");
         assertNotNull(SyncConfig.load(NodeConfig.load(file), file));
+        Files.writeString(file, base + "bind = \"0.0.0.0\"\n");
+        assertThrows(IllegalArgumentException.class, () -> SyncConfig.load(NodeConfig.load(file), file));
+        assertEquals("0.0.0.0", SyncConfig.load(NodeConfig.load(file), file, true).bind());
         var subscriber = new LimitedBodySubscriber(3);
         var cancelled = new java.util.concurrent.atomic.AtomicBoolean();
         subscriber.onSubscribe(new java.util.concurrent.Flow.Subscription() {

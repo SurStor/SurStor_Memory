@@ -3,9 +3,9 @@
 The container runs the SurStor node alongside your existing local model. It
 includes the node, adapter and embedding model, not the LLM itself. This is
 developer-preview packaging. The public image is
-`ghcr.io/surstor/surstor-memory:0.2.0-alpha.2` (Linux amd64).
-[The publishing run](https://github.com/SurStor/SurStor_Memory/actions/runs/39882817558)
-passed the standard and encrypted Linux container tests before pushing it.
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.3` (Linux amd64).
+The publishing workflow tests standard storage, encrypted storage and the sync
+listener before pushing each versioned image.
 
 ## Run the published image
 
@@ -124,6 +124,47 @@ and [Docker secrets documentation](https://docs.docker.com/compose/how-tos/use-s
 Encrypted records support list/retrieve by ID. Semantic search remains disabled.
 Signing identity files, exports and logs are outside Etch encryption; protect
 Docker's storage and backups accordingly.
+
+## Optional memory sync
+
+Alpha.3 includes bidirectional selected-memory sync, disabled by default. Use
+[the sync guide](node-sync.md) for group credentials, trusted signer keys and
+session selection. Keep a separate signing identity and storage key per node.
+
+1. Copy `docker/sync.example.toml` outside the repository. Set `enabled = true`
+   under `[sync]`, fill `trusted_signers`, and select shared sessions. Leave
+   `sync.bind = "0.0.0.0"` for Docker. This bind requires the container-network flag.
+2. For an encrypted volume, preserve the `[encryption]` section from
+   `docker/encrypted.toml` in your custom file; keep search disabled. Never apply
+   an unencrypted configuration to an encrypted volume.
+3. Set `SURSTOR_SYNC_CONFIG` to that complete TOML file and
+   `SURSTOR_SYNC_TOKEN_FILE` to your protected 64-hex-character group token file.
+   The config's token path must be `/run/secrets/sync-token`. Grant container UID
+   10001 read access to both mounted files using a narrow ACL/ownership rule.
+4. Use the overlay consistently with your existing profile:
+
+   ```sh
+   docker compose -f compose.registry.yaml -f compose.sync.yaml config --quiet
+   docker compose -f compose.registry.yaml -f compose.sync.yaml pull
+   docker compose -f compose.registry.yaml -f compose.sync.yaml up -d
+   ```
+
+   For encrypted storage substitute `compose.registry.encrypted.yaml` and keep
+   `SURSTOR_KEY_FILE` configured. The overlay retains the base project's existing
+   named data volume. It adds only `127.0.0.1:8485:8485` alongside local MCP.
+
+A native laptop node can connect to a container on a remote server through
+`ssh -N -L 18485:127.0.0.1:8485 user@server`, with the laptop peer set to
+`http://127.0.0.1:18485`. One initiating connection exchanges records both ways;
+the server may leave `peers = ""`.
+
+For container-to-container connections across hosts, put a valid HTTPS proxy in
+front of **only** the destination's dedicated sync listener, and configure that
+HTTPS URL as the peer. A container's `127.0.0.1` is its own network namespace,
+not the Docker host: do not point a container at a host SSH tunnel's localhost
+port. Do not weaken the peer URL restriction or expose MCP to work around this.
+Keep the credential header out of proxy logs and retain normal TLS checks.
+Remote proxy/tunnel provisioning is not automated by Compose.
 
 ## Persistence, stopping and upgrades
 
