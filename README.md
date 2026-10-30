@@ -2,7 +2,13 @@
 
 **Website: [www.surstor.net](https://www.surstor.net)**
 
-**v0.2.0-alpha.3 · Developer Preview**
+**v0.2.0-alpha.3-mcp.1 · Developer Preview**
+
+Current install version: `0.2.0-alpha.3-mcp.1`, matching the
+[Official MCP Registry listing](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.SurStor%2Fsurstor-memory).
+This is the MCP packaging revision of the alpha.3 application; the bundled
+JARs still report `0.2.0-alpha.3`. It adds registry ownership metadata without
+changing application behavior. See [release notes](RELEASE_NOTES.md).
 
 Early software for testing and feedback. Features and interfaces may change;
 review the limitations below before storing important information.
@@ -90,7 +96,7 @@ rates, caller examples, exclusions, migration and verification behavior.
 ## Run with Docker
 
 A public Linux amd64 image is available at
-`ghcr.io/surstor/surstor-memory:0.2.0-alpha.3`. From this checkout:
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.3-mcp.1`. From this checkout:
 
 ```sh
 docker compose -f compose.registry.yaml pull

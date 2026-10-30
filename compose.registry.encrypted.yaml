@@ -2,7 +2,7 @@
 name: surstor-memory-encrypted
 services:
   surstor:
-    image: ghcr.io/surstor/surstor-memory:0.2.0-alpha.3
+    image: ghcr.io/surstor/surstor-memory:0.2.0-alpha.3-mcp.1
     command: ["start", "--config", "/app/config/encrypted.toml", "--allow-container-network"]
     ports:
       - "127.0.0.1:8484:8484"

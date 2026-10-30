@@ -3,7 +3,10 @@
 The container runs the SurStor node alongside your existing local model. It
 includes the node, adapter and embedding model, not the LLM itself. This is
 developer-preview packaging. The public image is
-`ghcr.io/surstor/surstor-memory:0.2.0-alpha.3` (Linux amd64).
+`ghcr.io/surstor/surstor-memory:0.2.0-alpha.3-mcp.1` (Linux amd64).
+This is the current install version, also listed in the Official MCP Registry.
+It contains the unchanged alpha.3 application plus MCP registry ownership
+metadata; the application JAR version remains alpha.3.
 The publishing workflow tests standard storage, encrypted storage and the sync
 listener before pushing each versioned image.
 

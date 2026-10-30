@@ -1,3 +1,14 @@
+# v0.2.0-alpha.3-mcp.1 — current installation package
+
+- Current public Docker/MCP package: `ghcr.io/surstor/surstor-memory:0.2.0-alpha.3-mcp.1`.
+- Published as `io.github.SurStor/surstor-memory` in the Official MCP Registry.
+- Adds MCP ownership metadata to the tested alpha.3 image; application binaries
+  and behavior remain alpha.3. This is a packaging revision, not a new app release.
+- Standard and encrypted registry Compose recipes use this same image tag.
+- Standard storage remains unencrypted; encrypted storage is a separate opt-in profile.
+
+The versions below are historical release notes, not current installation targets.
+
 # v0.2.0-alpha.3 — selected-memory synchronization
 
 - Add opt-in, authenticated, bidirectional record sync between trusted single-user
