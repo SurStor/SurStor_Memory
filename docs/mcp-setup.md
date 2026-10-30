@@ -98,3 +98,9 @@ storage. Then call `surstor_retrieve` with that `id` and `surstor_verify` with
 the same `id` plus `"deep": true`. Verification checks integrity, not factual
 accuracy. The [fresh-chat exercise](local-models.md#4-recall-it-in-a-fresh-conversation)
 tests memory recall through your actual client.
+
+## Registry publication
+
+See [MCP Registry preparation](mcp-registry.md) for the chosen namespace and
+publication workflow and package configuration. Check the workflow and registry
+API for the published version.

@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl libgomp1 \
     && chown 10001:10001 /data && chmod 700 /data
 LABEL org.opencontainers.image.source="https://github.com/SurStor/SurStor_Memory"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
+LABEL io.modelcontextprotocol.server.name="io.github.SurStor/surstor-memory"
 WORKDIR /app
 COPY surstor-node/target/surstor-node.jar /app/surstor-node.jar
 COPY surstor-adapter/target/surstor-adapter-0.2.0-alpha.3-module.jar /app/modules/surstor-adapter-module.jar

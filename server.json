@@ -1,0 +1,53 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.SurStor/surstor-memory",
+  "title": "SurStor Memory",
+  "description": "Local memory for AI models: store, retrieve and verify records on your own hardware.",
+  "repository": {
+    "url": "https://github.com/SurStor/SurStor_Memory",
+    "source": "github"
+  },
+  "version": "0.2.0-alpha.3-mcp.1",
+  "packages": [
+    {
+      "registryType": "oci",
+      "identifier": "ghcr.io/surstor/surstor-memory:0.2.0-alpha.3-mcp.1",
+      "transport": {
+        "type": "streamable-http",
+        "url": "http://127.0.0.1:8484/mcp"
+      },
+      "runtimeHint": "docker",
+      "runtimeArguments": [
+        {
+          "type": "named",
+          "name": "--publish",
+          "value": "127.0.0.1:8484:8484"
+        },
+        {
+          "type": "named",
+          "name": "--volume",
+          "value": "surstor-mcp-memory:/data"
+        },
+        {
+          "type": "named",
+          "name": "--read-only"
+        },
+        {
+          "type": "named",
+          "name": "--cap-drop",
+          "value": "ALL"
+        },
+        {
+          "type": "named",
+          "name": "--security-opt",
+          "value": "no-new-privileges:true"
+        },
+        {
+          "type": "named",
+          "name": "--tmpfs",
+          "value": "/tmp:rw,exec,nosuid,size=1g,mode=1777"
+        }
+      ]
+    }
+  ]
+}
